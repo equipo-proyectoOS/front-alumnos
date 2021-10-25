@@ -4,7 +4,6 @@ import React from 'react';
 
 const Home = () => {
 
-    const getDatosUsuario = () => {
         let url = "https://jsonplaceholder.typicode.com/users";
         fetch(url)
             .then(response => response.json())
@@ -30,7 +29,6 @@ const Home = () => {
             }
             document.getElementById('data').innerHTML = body
         }
-    }
     
     const EnviarDatosPost = () => {
         const objt = {
@@ -69,8 +67,6 @@ const Home = () => {
         <img src={animals} alt="Profesionales" width="100%"></img>
       </div>
     </div>
-    
-    <button className="" onClick={() => getDatosUsuario()}>MOSTRAR DATOS</button>
     <div class="container mt-4 shadow-lg p3 mt-5 bg-body rounded">
         <table class="table table-bordered table-striped ">
             <thead>
