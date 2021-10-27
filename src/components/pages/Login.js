@@ -38,6 +38,7 @@ const Login = () => {
 			setUser(user);
 			setUsername('');
 			setPassword('');
+			//window.location.href="/home"
 			
 		}catch(e){
 			

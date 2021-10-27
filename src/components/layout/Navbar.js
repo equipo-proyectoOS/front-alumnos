@@ -1,26 +1,33 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { Link } from "react-router-dom";
 import '../pages/Login';
+import Login from '../pages/Login';
 
-const renderLoginButton = () => {
-  
-        <Link class ="btn btn-warning" type="button"  to='/login'><i class='bx bxs-user'></i> INICAR SESION </Link>
-  
+
+
+
+
+const Navbar = () => {
+
+  const renderLoginButton = () => {
+  return( 
+    <Link class ="btn btn-warning" type="button"  to='/login'><i class='bx bxs-user'></i> INICAR SESION </Link>
+    )
 }
 
 const renderRegisterButton = () => {
-  
-    <Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> REGISTRO </Link>
-  
+  return( 
+<Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> REGISTRO </Link>
+)
 }
 
 const renderListarButton = () => {
-  
-    <Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> LISTAR </Link>
-  
+
+<Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> LISTAR </Link>
+
 }
 
-const Navbar = () => {
+
     return (
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
@@ -38,10 +45,17 @@ const Navbar = () => {
                 {renderLoginButton()};
               </li>
               <li class="nav-item active mx-2">
-              {renderRegisterButton()};
+              
+								{renderRegisterButton()};
+							
               </li>
               <li class="nav-item active mx-2">
-              {renderListarButton()};
+              
+              {
+								Login.user
+								?renderLoginButton()
+								:renderListarButton()
+							}
               </li>
             </ul>
           </div>

@@ -4,7 +4,7 @@ import React from 'react';
 
 const Home = () => {
 
-        let url = "https://jsonplaceholder.typicode.com/users";
+        let url = "http://localhost:4000/usuarios";
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -16,14 +16,10 @@ const Home = () => {
             for (let i = 0; i < data.length; i++) {
                 body += `<tr>
                 <td>${data[i].id}</td>
-                <td>${data[i].name}</td>
+                
                 <td>${data[i].username}</td>
-                <td>${data[i].email}</td>
-                <td>${data[i].address.street}</td>
-                <td>${data[i].address.suite}</td>
-                <td>${data[i].phone}</td>
-                <td>${data[i].website}</td>
-                <td>${data[i].company.name}</td>
+                <td>${data[i].password}</td>
+                
                 </tr>`
     
             }
@@ -32,31 +28,24 @@ const Home = () => {
     
     const EnviarDatosPost = () => {
         const objt = {
-                  id: 11,
-                  name: "Enzo",
-                  username: "Enzo12",
-                  email: "correoprueba1@gmail.com",
-                  address: {
-                    street: "Kulas",
-                    suite: "Apt. 12"
-                    },
-                  phone: "324567689",
-                  website: "soli.org",
-                  company: {
-                        name: "burbuja1"
-                  }
+                  id: 2,
+                  username: "correoxd@gmail.com",
+                  password: "123456",
+                  
         }
         console.log(objt)
-        let url = "https://jsonplaceholder.typicode.com/users";
+        let url = "http://localhost:4000/usuarios";
         fetch(url,{
             method: "POST",
             body: JSON.stringify(objt),
             headers:{
                 'Content-Type' : 'application/json'
             }
+            
         }).then(response => response.json())
         .catch(error => console.log('No Funciona',error))
         .then(response => console.log('funciona', response))
+        
     }
   
     return (
@@ -72,14 +61,9 @@ const Home = () => {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>NAME</th>
                     <th>USERNAME</th>
-                    <th>EMAIL</th>
-                    <th>ADDRESS STREET</th>
-                    <th>ADDRESS SUITE</th>
-                    <th>PHONE</th>
-                    <th>WEBSITE</th>
-                    <th>COMPANY NAME</th>
+                    <th>PASSWORD</th>
+                   
                 </tr>
             </thead>
             <tbody id="data">
