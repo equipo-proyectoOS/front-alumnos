@@ -19,33 +19,133 @@ const Login = () => {
     return (
         <div class="limiter">
 		<div class="container-login100" style={{ backgroundImage: `url(${imagen})` }}>
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-49">
-						REGISTRO
-					</span>
 
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Usuario es requerido">
-						<span class="label-input100">Nombre de Usuario</span>
-						<input class="input100" type="text" name="username" placeholder="Nombre de Usuario"/>
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
-						<span class="label-input100">Contraseña</span>
-						<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
-					</div> <br></br>
+			<div class="container">
+				<div class="row">
 					
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								REGISTRARSE
-							</button>
-						</div>
+					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+						<form class="login100-form validate-form col md-4">
+							<span class="login100-form-title p-b-49">
+								REGISTRO
+							</span>
+							<div class="wrap-input100 validate-input m-b-23" data-validate = "Usuario es requerido">
+								<span class="label-input100">Nombre de Usuario</span>
+								<input class="input100" type="text" name="username" placeholder="Nombre de Usuario"/>
+								<span class="focus-input100" data-symbol="&#xf206;"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+					
+						</form>
 					</div>
-				</form>
+										{/* prueba */}
+						<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+										<form class="login100-form validate-form col md-4">
+							<span class="login100-form-title p-b-49">
+								REGISTRO
+							</span>
+							<div class="wrap-input100 validate-input m-b-23" data-validate = "Usuario es requerido">
+								<span class="label-input100">Nombre de Usuario</span>
+								<input class="input100" type="text" name="username" placeholder="Nombre de Usuario"/>
+								<span class="focus-input100" data-symbol="&#xf206;"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+					
+						</form>
+						</div>
+						{/* fin prueba */}
+
+
+
+					{/* prueba */}
+					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+										<form class="login100-form validate-form col md-4">
+							<span class="login100-form-title p-b-49">
+								REGISTRO
+							</span>
+							<div class="wrap-input100 validate-input m-b-23" data-validate = "Usuario es requerido">
+								<span class="label-input100">Nombre de Usuario</span>
+								<input class="input100" type="text" name="username" placeholder="Nombre de Usuario"/>
+								<span class="focus-input100" data-symbol="&#xf206;"></span>
+							</div>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+							<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
+								<span class="label-input100">Contraseña</span>
+								<input class="input100" type="password" name="pass" placeholder="Contraseña"/>
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div> <br></br>
+					
+						</form>
+						</div>
+						{/* fin prueba */}
+
+
+
+				</div>
+
+
+
+
+
+				<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn btn btn-warning">
+									REGISTRARSE
+								</button>
+							</div>
+						</div>
 			</div>
 		</div>
 	</div>
