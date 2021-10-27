@@ -21,9 +21,9 @@ const Login = () => {
 		<div class="container-login100" style={{ backgroundImage: `url(${imagen})` }}>
 
 			<div class="container">
-				<div class="row">
+				<div class="row justify-content-start p-1 d-grid gap-3">
 					
-					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4 mr-auto">
 						<form class="login100-form validate-form col md-4">
 							<span class="login100-form-title p-b-49">
 								REGISTRO
@@ -57,7 +57,7 @@ const Login = () => {
 						</form>
 					</div>
 										{/* prueba */}
-						<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+						<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4 mr-auto">
 										<form class="login100-form validate-form col md-4">
 							<span class="login100-form-title p-b-49">
 								REGISTRO
@@ -95,7 +95,7 @@ const Login = () => {
 
 
 					{/* prueba */}
-					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4">
+					<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 row py-6 col-md-4 mr-auto">
 										<form class="login100-form validate-form col md-4">
 							<span class="login100-form-title p-b-49">
 								REGISTRO
