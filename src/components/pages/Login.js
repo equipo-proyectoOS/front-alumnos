@@ -13,7 +13,8 @@ import '../../Login_v4/vendor/daterangepicker/daterangepicker.css';
 import '../../Login_v4/css/util.css';
 import '../../Login_v4/css/main.css';
 import imagen from "../../Login_v4/images/bg-01.jpg"
-import loginServicios from '../js/iniciarlogin'
+import loginServicios from '../js/login'
+import login from '../js/login';
 
 const Login = () => {
 
@@ -25,11 +26,13 @@ const Login = () => {
 
 	const handleSubmit = async (event) =>{
 		event.preventDefault()
-
+		//console.log(username, password)
 		try{
-			const user = await loginServicios.iniciarsesion({
+			//console.log(username, password, "try")
+			const user = await loginServicios.login({
 				username,
 				password
+				
 			})
 			console.log(user)
 			setUser(user);
@@ -37,9 +40,22 @@ const Login = () => {
 			setPassword('');
 			
 		}catch(e){
-			console.log("error: ",e)
+			
+			console.log(e)
 		}
 	}
+
+	const RenderLogin = () => (
+		<button class="login100-form-btn">
+		INICIAR
+	</button>
+	)
+
+	const Renderlistar = () => (
+		<button class="login100-form-btn">
+		LISTAR
+	</button>
+	)
 
     return (
         <div class="limiter">
@@ -55,9 +71,9 @@ const Login = () => {
 						<input class="input100" 
 						type="text" 
 						value= {username}
-						name="username" 
+						name="Username" 
 						placeholder="Nombre de Usuario"
-						onChange={(target) => setUsername(target.value)}
+						onChange={({target}) => setUsername(target.value)}
 						/>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
@@ -66,10 +82,10 @@ const Login = () => {
 						<span class="label-input100">Contraseña</span>
 						<input class="input100" 
 						type="password" 
-						name="pass" 
+						name="password" 
 						placeholder="Contraseña"
 						value= {password}
-						onChange={(target) => setPassword(target.value)}
+						onChange={({target}) => setPassword(target.value)}
 						/>
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div> <br></br>
@@ -77,12 +93,16 @@ const Login = () => {
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								INICIAR
-							</button>
+							{
+								user
+								?Renderlistar()
+								:RenderLogin()
+							}
+							
 						</div>
 						 {/* <Notification message={errorMessage}/>  */}
 					</div>
+					
 				</form>
 			</div>
 		</div>

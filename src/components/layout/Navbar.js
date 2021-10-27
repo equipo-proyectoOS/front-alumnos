@@ -1,5 +1,24 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import '../pages/Login';
+
+const renderLoginButton = () => {
+  
+        <Link class ="btn btn-warning" type="button"  to='/login'><i class='bx bxs-user'></i> INICAR SESION </Link>
+  
+}
+
+const renderRegisterButton = () => {
+  
+    <Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> REGISTRO </Link>
+  
+}
+
+const renderListarButton = () => {
+  
+    <Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> LISTAR </Link>
+  
+}
 
 const Navbar = () => {
     return (
@@ -16,10 +35,13 @@ const Navbar = () => {
                 <Link class ="btn btn-warning" type="button" to='/home'>Home </Link>
               </li>
               <li class="nav-item active mx-2">
-                <Link class ="btn btn-warning" type="button"  to='/login'><i class='bx bxs-user'></i> INICAR SESION </Link>
+                {renderLoginButton()};
               </li>
               <li class="nav-item active mx-2">
-                <Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> REGISTRO </Link>
+              {renderRegisterButton()};
+              </li>
+              <li class="nav-item active mx-2">
+              {renderListarButton()};
               </li>
             </ul>
           </div>

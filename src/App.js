@@ -10,6 +10,8 @@ import Registro from"./components/pages/Registro";
 
 
 
+
+
 function App() {
   /* const decirSaludo = (params) => {
     alert(`Hola ${params}`)
