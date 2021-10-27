@@ -54,7 +54,7 @@ const Login = () => {
                     name="date"
                     placeholder="Nacimiento"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -68,7 +68,7 @@ const Login = () => {
                     name="dni"
                     placeholder="Nro de documento"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -82,7 +82,7 @@ const Login = () => {
                     name="pass"
                     placeholder="Genero"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -96,7 +96,7 @@ const Login = () => {
                     name="provincia"
                     placeholder="Provincia"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -110,7 +110,7 @@ const Login = () => {
                     name="pais"
                     placeholder="Pais"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -124,7 +124,7 @@ const Login = () => {
                     name="direccion"
                     placeholder="Direccion"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -138,7 +138,7 @@ const Login = () => {
                     name="hobby"
                     placeholder="Hobbys"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
               </form>
@@ -160,7 +160,7 @@ const Login = () => {
                     name="username"
                     placeholder="Nombre de Usuario"
                   />
-                  <span class="focus-input100" data-symbol="&#xf206;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <div
                   class="wrap-input100 validate-input"
@@ -173,7 +173,7 @@ const Login = () => {
                     name="email"
                     placeholder="E-mail"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
 
@@ -199,7 +199,7 @@ const Login = () => {
                     name="colegio"
                     placeholder="Colegio Secundario"
                   />
-                  <span class="focus-input100" data-symbol="&#xf206;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <div
                   class="wrap-input100 validate-input"
@@ -212,7 +212,7 @@ const Login = () => {
                     name="lic"
                     placeholder="Licenciatura"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <div
@@ -226,7 +226,7 @@ const Login = () => {
                     name="cert"
                     placeholder="Cetificados"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
 
@@ -257,7 +257,7 @@ const Login = () => {
                     name="sumario"
                     placeholder="Sumario"
                   />
-                  <span class="focus-input100" data-symbol="&#xf206;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
 
                 <br></br>
@@ -277,7 +277,7 @@ const Login = () => {
                     name="expLab"
                     placeholder="Experiencia Laboral"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
 
                 <br></br>
@@ -295,7 +295,7 @@ const Login = () => {
                     name="habilidades"
                     placeholder="Habilidades"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
     
                 <br></br>
@@ -314,7 +314,7 @@ const Login = () => {
                     name="lenguajes"
                     placeholder="Lenguajes"
                   />
-                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                  <span class="focus-input100" data-symbol=""></span>
                 </div>
                 <br></br>
                 <br></br>
