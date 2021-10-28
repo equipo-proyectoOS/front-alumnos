@@ -322,7 +322,6 @@ const Login = () => {
                   <br></br>
                   <br></br>
                   <br></br>
-                  <br></br>
 
                   <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
@@ -340,28 +339,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
-    /*  */
   );
 };
 
