@@ -1,10 +1,12 @@
-import animals from '../../assets/slider-01.jpg'
-import React from 'react';
+//import animals from '../../assets/slider-01.jpg'
+import React, {useEffect} from 'react';
+import imagen from "../../Login_v4/images/bg-01.jpg"
 
 
 const Home = () => {
 
-        let url = "http://localhost:4000/usuarios";
+    useEffect(()=>{
+        let url = "https://equipo-server.herokuapp.com/estudiante";
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -15,26 +17,28 @@ const Home = () => {
             let body = ""
             for (let i = 0; i < data.length; i++) {
                 body += `<tr>
-                <td>${data[i].id}</td>
-                
-                <td>${data[i].username}</td>
-                <td>${data[i].password}</td>
+                <td>${data[i].datos_personales.numero_telefono}</td>
+                <td>${data[i].datos_personales.nombre_apellido}</td>
+                <td>${data[i].datos_personales.edad}</td>
                 
                 </tr>`
     
             }
             document.getElementById('data').innerHTML = body
         }
+      },[]);
+
+       
     
     const EnviarDatosPost = () => {
         const objt = {
-                  id: 2,
-                  username: "correoxd@gmail.com",
-                  password: "123456",
-                  
+                  nombre_usuario: "Enzo",
+                  email: "correoxd12@gmail.com",
+                  password: "123456"
         }
         console.log(objt)
-        let url = "http://localhost:4000/usuarios";
+        let url = "";
+        //https://equipo-server.herokuapp.com/registro
         fetch(url,{
             method: "POST",
             body: JSON.stringify(objt),
@@ -49,20 +53,20 @@ const Home = () => {
     }
   
     return (
-        
+        <div class="container-login100" style={{ backgroundImage: `url(${imagen})` }}>
         <div class="container col-xs-6 col-sm-10 col-lg-11 col-xl-11 ">
-    <div class="row" >
+    {/* <div class="row" >
       <div class="col-lg-12 text-center">
         <img src={animals} alt="Profesionales" width="100%"></img>
       </div>
-    </div>
+    </div> */}
     <div class="container mt-4 shadow-lg p3 mt-5 bg-body rounded">
         <table class="table table-bordered table-striped ">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>NUMERO TELEFONO</th>
                     <th>USERNAME</th>
-                    <th>PASSWORD</th>
+                    <th>EDAD</th>
                    
                 </tr>
             </thead>
@@ -72,6 +76,7 @@ const Home = () => {
         </table>
     </div>
     <button onClick={() => EnviarDatosPost()}>ENVIAR DATOS</button>
+    </div>
     </div>
     )
 }

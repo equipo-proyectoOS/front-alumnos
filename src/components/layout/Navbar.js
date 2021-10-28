@@ -1,7 +1,7 @@
-import React , {useState} from 'react'
+import React  from 'react'
 import { Link } from "react-router-dom";
-import '../pages/Login';
-import Login from '../pages/Login';
+//import '../pages/Login';
+//import {user} from '../pages/Login';
 
 
 
@@ -51,11 +51,11 @@ const renderListarButton = () => {
               </li>
               <li class="nav-item active mx-2">
               
-              {
-								Login.user
+              {/* {
+								user
 								?renderLoginButton()
 								:renderListarButton()
-							}
+							}  */}
               </li>
             </ul>
           </div>

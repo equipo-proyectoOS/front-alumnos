@@ -31,6 +31,12 @@ const Login = () => {
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Usuario es requerido">
+						<span class="label-input100">CorroElecronico</span>
+						<input class="input100" type="text" name="username" placeholder="Nombre de Usuario"/>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate="Contraseña es requerido">
 						<span class="label-input100">Contraseña</span>
 						<input class="input100" type="password" name="pass" placeholder="Contraseña"/>

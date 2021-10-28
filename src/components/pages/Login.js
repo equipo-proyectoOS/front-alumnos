@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 
 
 import '../../Login_v4/vendor/bootstrap/css/bootstrap.min.css';
@@ -14,35 +14,51 @@ import '../../Login_v4/css/util.css';
 import '../../Login_v4/css/main.css';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 import loginServicios from '../js/login'
-import login from '../js/login';
+//import login from '../js/login';
 
 const Login = () => {
 
-	const[errorMessage, setErrorMessage] = useState (null)
+	//const[errorMessage, setErrorMessage] = useState (null)
 
-	const [username,setUsername] = useState('')
+	const [email,setemail] = useState('')
 	const [password,setPassword] = useState('') 
 	const [user, setUser] = useState(null);
 
+	useEffect(() => {
+	}, [])
+
+	useEffect(()=>{
+		const loggeUserJSON = window.localStorage.getItem('loggdUser')
+		if (loggeUserJSON){
+			const user = JSON.parse(loggeUserJSON)
+			setUser(user)
+		}
+	},[])
+
 	const handleSubmit = async (event) =>{
 		event.preventDefault()
-		//console.log(username, password)
+		//console.log(email, password)
 		try{
-			//console.log(username, password, "try")
+			//console.log(email, password, "try")
 			const user = await loginServicios.login({
-				username,
+				email,
 				password
 				
 			})
+
+			window.localStorage.setItem(
+				'loggedUser', JSON.stringify(user)
+			)
+
 			console.log(user)
 			setUser(user);
-			setUsername('');
+			setemail('');
 			setPassword('');
 			//window.location.href="/home"
 			
 		}catch(e){
 			
-			console.log(e)
+			console.log("Errorcito",e)
 		}
 	}
 
@@ -71,10 +87,10 @@ const Login = () => {
 						<span class="label-input100">Nombre de Usuario</span>
 						<input class="input100" 
 						type="text" 
-						value= {username}
-						name="Username" 
+						value= {email}
+						name="email" 
 						placeholder="Nombre de Usuario"
-						onChange={({target}) => setUsername(target.value)}
+						onChange={({target}) => setemail(target.value)}
 						/>
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
@@ -95,6 +111,7 @@ const Login = () => {
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							{
+								
 								user
 								?Renderlistar()
 								:RenderLogin()
