@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://equipo-server.herokuapp.com/auth/login";
+const baseUrl = "https://ipf-profesionales.herokuapp.com/api/login";
 
 
 const login = async credentials => {
@@ -9,5 +9,4 @@ const login = async credentials => {
     return data
     
 }
-
 export default  {login};
