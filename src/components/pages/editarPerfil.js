@@ -14,7 +14,7 @@ import '../../Login_v4/css/main.css';
 
 import imagen from "../../Login_v4/images/bg-01.jpg"
 
-const Login = () => {
+const Editar = () => {
 
     return (
         <div class="limiter">
@@ -59,4 +59,4 @@ const Login = () => {
 
 }
 
-export default Login
+export default Editar

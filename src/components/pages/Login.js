@@ -32,6 +32,7 @@ const Login = () => {
 		if (loggeUserJSON){
 			const user = JSON.parse(loggeUserJSON)
 			setUser(user)
+			console.log(user)
 		}
 	},[])
 

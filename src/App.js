@@ -7,16 +7,16 @@ import Home from "./components/pages/Home";
 import Posts from "./components/pages/Posts";
 import Users from "./components/pages/Users";
 import Registro from"./components/pages/Registro";
+import Listar from"./components/pages/AgregarProf";
+import Editar from './components/pages/editarPerfil';
+import { Filtro } from './components/js/Filtro';
 
 
 
 
 
 function App() {
-  /* const decirSaludo = (params) => {
-    alert(`Hola ${params}`)
-    
-  } */
+  
   const Routing = () => {
   
    
@@ -28,6 +28,9 @@ function App() {
         <Route exact path="/users" component={Users}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/registro" component={Registro}/>
+        <Route exact path="/listar" component={Listar}/>
+        <Route exact path="/editar" component={Editar}/>
+        <Route exact path="/filtro" component={Filtro}/>
       </Switch>
     )
   }
@@ -39,17 +42,6 @@ function App() {
         <Navbar/>
         <Routing/>
       </Router>
-  
-      {/* <div className="row mx-auto w-75">
-        <div className="cold">
-          <button
-            onClick={() => decirSaludo('AGUSTIN')}
-            className='btn-info'
-        >
-          Saludar
-        </button>
-        </div>
-      </div> */}
   
   </>
   

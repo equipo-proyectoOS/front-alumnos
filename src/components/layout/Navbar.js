@@ -21,13 +21,6 @@ const renderRegisterButton = () => {
 )
 }
 
-const renderListarButton = () => {
-
-<Link class ="btn btn-warning" type="button"  to='/registro'><i class='bx bxs-user'></i> LISTAR </Link>
-
-}
-
-
     return (
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
@@ -39,7 +32,7 @@ const renderListarButton = () => {
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active mx-2"> 
-                <Link class ="btn btn-warning" type="button" to='/home'>Home </Link>
+                <Link class ="btn btn-warning" type="button" to='/home'>INICIO</Link>
               </li>
               <li class="nav-item active mx-2">
                 {renderLoginButton()};
@@ -50,13 +43,11 @@ const renderListarButton = () => {
 							
               </li>
               <li class="nav-item active mx-2">
-              
-              {/* {
-								user
-								?renderLoginButton()
-								:renderListarButton()
-							}  */}
+              <Link class ="btn btn-warning" type="button"  to='/listar'><i class='bx bxs-add-to-queue'></i> LISTAR </Link>
               </li>
+              {/* <li class="nav-item active mx-2">
+              <Link class ="btn btn-warning" type="button"  to='/editar'><i class='bx bxs-add-to-queue'></i> EDITAR </Link>
+              </li> */}
             </ul>
           </div>
         </div>
