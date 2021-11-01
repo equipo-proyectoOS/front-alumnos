@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://ipf-profesionales.herokuapp.com/api/profesionales/";
+const baseUrl = "https://ipf-profesionales.herokuapp.com/api/login";
 
 
 const buscador = async credentials => {

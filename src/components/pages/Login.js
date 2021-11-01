@@ -14,21 +14,21 @@ import '../../Login_v4/css/util.css';
 import '../../Login_v4/css/main.css';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 import loginServicios from '../js/login'
-//import login from '../js/login';
+
 
 const Login = () => {
 
-	//const[errorMessage, setErrorMessage] = useState (null)
+	const[errorMessage, setErrorMessage] = useState (null)
 
 	const [email,setemail] = useState('')
 	const [password,setPassword] = useState('') 
 	const [user, setUser] = useState(null);
+	
 
-	useEffect(() => {
-	}, [])
+	
 
 	useEffect(()=>{
-		const loggeUserJSON = window.localStorage.getItem('loggdUser')
+		const loggeUserJSON = window.localStorage.getItem('loggedUser')
 		if (loggeUserJSON){
 			const user = JSON.parse(loggeUserJSON)
 			setUser(user)
@@ -36,12 +36,19 @@ const Login = () => {
 		}
 	},[])
 
+	
+
+	if (localStorage.getItem(null)){
+		setUser('')
+		console.log(user + " se limipo ")
+	}
+
 	const handleSubmit = async (event) =>{
 		event.preventDefault()
-		//console.log(email, password)
+		
 		try{
-			//console.log(email, password, "try")
-			const user = await loginServicios.login({
+			
+			const user = await loginServicios.buscador({
 				email,
 				password
 				
@@ -55,25 +62,18 @@ const Login = () => {
 			setUser(user);
 			setemail('');
 			setPassword('');
-			//window.location.href="/home"
+			window.location.href="/home"
 			
 		}catch(e){
-			
+			setErrorMessage('Usuario o Contraseña incorrecta')
+			setTimeout(() => {
+					setErrorMessage(null)
+			}, 3000)
 			console.log("Error",e)
 		}
 	}
 
-	const RenderLogin = () => (
-		<button class="login100-form-btn">
-		INICIAR
-	</button>
-	)
-
-	const Renderlistar = () => (
-		<button class="login100-form-btn">
-		LISTAR
-	</button>
-	)
+	
 
     return (
         <div class="limiter">
@@ -111,15 +111,11 @@ const Login = () => {
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							{
-								
-								user
-								?Renderlistar()
-								:RenderLogin()
-							}
-							
+							<button class="login100-form-btn">INICIAR</button>
 						</div>
-						 {/* <Notification message={errorMessage}/>  */}
+						 <div>
+						 <p>{errorMessage}</p>
+						 </div>
 					</div>
 					
 				</form>
@@ -130,4 +126,4 @@ const Login = () => {
 
 }
 
-export default Login
+export default Login;

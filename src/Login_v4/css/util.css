@@ -2983,7 +2983,15 @@
 	bottom: 0px;
 }
 
+button:hover{
+	background-color:rgb(189, 8, 235) ;
+	transform: scale(1.05);
+}
 
+input:hover {
+	transform: scale(1.05);
+	
+}
 
 
 

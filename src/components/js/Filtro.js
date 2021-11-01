@@ -17,7 +17,7 @@ export const Filtro = () => {
         console.log(idbuscar);
 
         setTexto('');
-
+        
         return idbuscar;
     }
     return (

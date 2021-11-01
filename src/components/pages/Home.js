@@ -10,6 +10,8 @@ import { Filtro } from '../js/Filtro';
 
 
 const Home = () => {
+
+    
     
     useEffect(()=>{
                 let url = `https://ipf-profesionales.herokuapp.com/api/profesionales/`;
@@ -26,7 +28,7 @@ const Home = () => {
                     
                     for (let i = 0; i < data.length; i++) {
                         body += `<div class="col-md-3 col-sm-6" >
-                        <div class="card card-block mx-2">
+                        <div class="card card-block mx-3 mb-5">
                             <img src="https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/foto-de-perfil-para-instagram-1024x538.png" alt="Perfil"/>
                             <h5 class="card-title mt-3 mb-3">${data[i].personal_info.fullname}</h5>
                             <p>Cumpleaños: <b>${data[i].personal_info.birthdate}</b></p> 
@@ -48,7 +50,7 @@ const Home = () => {
                             <p>Conocimientos: <b>${data[i].professional_info.summary}</b></p>  
                             <p>Experiencia Laboral: <b>${data[i].professional_info.work_exp}</b></p>
                             <p>Habilidades: <b>${data[i].professional_info.skills}</b></p>
-                            <p>Lenguajes: <b>${data[i].professional_info.lenguages}</b></p> 
+                            <p>Lenguajes: <b>${data[i].professional_info.languages}</b></p> 
                         </div>
                         </div>
                         `
@@ -60,27 +62,7 @@ const Home = () => {
 
        
     
-    const EnviarDatosPost = () => {
-        const objt = {
-                  nombre_usuario: "Enzo",
-                  email: "correoxd12@gmail.com",
-                  password: "123456"
-        }
-        console.log(objt)
-        let url = "";
-        //https://equipo-server.herokuapp.com/registro
-        fetch(url,{
-            method: "POST",
-            body: JSON.stringify(objt),
-            headers:{
-                'Content-Type' : 'application/json'
-            }
-            
-        }).then(response => response.json())
-        .catch(error => console.log('No Funciona',error))
-        .then(response => console.log('funciona', response))
-        
-    }
+    
   
     return (
         

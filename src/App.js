@@ -10,13 +10,15 @@ import Registro from"./components/pages/Registro";
 import Listar from"./components/pages/AgregarProf";
 import Editar from './components/pages/editarPerfil';
 import { Filtro } from './components/js/Filtro';
+import PrivateRoute from './components/js/PrivateRoute';
+import PrivateRoute2 from './components/js/PrivateRoute2';
+
 
 
 
 
 
 function App() {
-  
   const Routing = () => {
   
    
@@ -26,9 +28,9 @@ function App() {
         <Route exact path="/home" component={Home}/>
         <Route exact path="/posts" component={Posts}/>
         <Route exact path="/users" component={Users}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/registro" component={Registro}/>
-        <Route exact path="/listar" component={Listar}/>
+        <PrivateRoute exact path="/login" component={Login}/>
+        <PrivateRoute exact path="/registro" component={Registro}/>
+        <PrivateRoute2 exact path="/listar" component={Listar}/>
         <Route exact path="/editar" component={Editar}/>
         <Route exact path="/filtro" component={Filtro}/>
       </Switch>
