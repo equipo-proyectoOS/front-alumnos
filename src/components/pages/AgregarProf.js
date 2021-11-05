@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import * as yup from 'yup';
 
 import "../../Login_v4/vendor/bootstrap/css/bootstrap.min.css";
 import "../../Login_v4/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
@@ -15,6 +16,134 @@ import "../../Login_v4/css/main.css";
 import imagen from "../../Login_v4/images/bg-01.jpg";
 
 const Listar = () => {
+
+  let schemaDatosProf = yup.object().shape({
+    nombre:yup.string().required(),
+    nacimiento: yup.string().required(),
+    dni: yup.number().required().positive().integer(),
+    genero: yup.string().required(),
+    provincia: yup.string().required(),
+    pais: yup.string().required(),
+    direccion: yup.string().required(),
+    hobbies: yup.string(),
+    telefono: yup.string().required(),
+    email: yup.string().email().required(),
+    redes: yup.string(),
+    primaria: yup.string().required(),
+    secundaria: yup.string().required(),
+    terciaria: yup.string().required(),
+    universidad: yup.string().required(),
+    certificado: yup.string(),
+    sumario: yup.string().required(),
+    exp: yup.string().required(),
+    hablidades: yup.string().required(),
+    idiomas: yup.string()
+  })
+
+const[nombre, setNombre] = useState('')
+const[nacimiento, setNacimiento] = useState('')
+const[dni, setDni] = useState('')
+const[genero, setGenero] = useState('')
+const[provincia, setProvincia] = useState('')
+const[pais, setPais] = useState('')
+const[direccion, setDireccion] = useState('')
+const[hobbies, setHobbies] = useState('')
+const[telefono, setTelefono] = useState('')
+const[email, setEmail] = useState('')
+const[redes, setRedes] = useState('')
+const[primaria, setPrimaria] = useState('')
+const[secundaria, setSecundaria] = useState('')
+const[terciaria, setTerciaria] = useState('')
+const[universidad, setUniversidad] = useState('')
+const[certificado, setCertificado] = useState('')
+const[sumario, setSumario] = useState('')
+const[exp, setExp] = useState('')
+const[hablidades, setHabilidades] = useState('')
+const[idiomas, setIdiomas] = useState('')
+
+const[enviar,  setEnviar] = useState(false);
+
+
+useEffect(() => {
+  schemaDatosProf.isValid({nombre, nacimiento, dni,genero,provincia, pais,direccion,hobbies,telefono,email,
+    redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas})
+
+    .then(
+      (valid) => {
+        if(valid){
+          setEnviar(true);
+        }else{
+          setEnviar(false);
+        }
+      }
+    )
+},[nombre, nacimiento, dni,genero,provincia, pais,direccion,hobbies,telefono,email,
+  redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas, schemaDatosProf])
+
+
+	//const [registrado, setRegistrado] = useState(null)
+
+	const EnviarDatos = async () => {
+
+		let myHeaders = new Headers();
+
+		myHeaders.append("Content-Type", "application/json")
+
+		const raw = JSON.stringify({
+        "personal_info": {
+        "fullname": nombre,
+        "birthdate": nacimiento,
+        "dni": dni,
+        "gender": genero,
+        "country": pais,
+        "state": provincia,
+        "address": direccion,
+        "hobbies": hobbies
+        },
+        "contact_info": {
+        "phone": telefono,
+        "email": email,
+        "social_media": [
+            redes
+        ]
+        },
+        "academic_info": {
+        "primary": primaria,
+        "secondary": secundaria,
+        "tertiary": terciaria,
+        "certifications": [ 
+          certificado
+        ]
+        },
+        "professional_info": {
+        "summary": sumario,
+        "work_exp": exp,
+        "skills": hablidades,
+        "languages": [
+          idiomas
+        ]
+        }
+        
+			
+		})
+
+		const options = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		}
+
+		const postData = await fetch("http://localhost:4000/usuarios", options)
+		const res = postData.json()
+		console.log(res)
+		//setRegistrado(true)
+
+		
+	}
+
+
+
   return (
     <div class="limiter">
       <div
@@ -45,6 +174,7 @@ const Listar = () => {
                       type="text"
                       name="nombre"
                       placeholder="Nombre completo"
+                      onChange={(e) =>{setNombre(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol="&#xf206;"></span>
                   </div>
@@ -58,6 +188,7 @@ const Listar = () => {
                       type="date"
                       name="date"
                       placeholder="Nacimiento"
+                      onChange={(e) =>{setNacimiento(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -72,6 +203,7 @@ const Listar = () => {
                       type="text"
                       name="dni"
                       placeholder="Nro de documento"
+                      onChange={(e) =>{setDni(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -86,6 +218,7 @@ const Listar = () => {
                       type="text"
                       name="pass"
                       placeholder="Genero"
+                      onChange={(e) =>{setGenero(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -100,6 +233,7 @@ const Listar = () => {
                       type="text"
                       name="provincia"
                       placeholder="Provincia"
+                      onChange={(e) =>{setProvincia(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -114,6 +248,7 @@ const Listar = () => {
                       type="text"
                       name="pais"
                       placeholder="Pais"
+                      onChange={(e) =>{setPais(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -128,6 +263,7 @@ const Listar = () => {
                       type="text"
                       name="direccion"
                       placeholder="Direccion"
+                      onChange={(e) =>{setDireccion(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -142,6 +278,7 @@ const Listar = () => {
                       type="text"
                       name="hobby"
                       placeholder="Hobbys"
+                      onChange={(e) =>{setHobbies(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -165,6 +302,7 @@ const Listar = () => {
                       type="text"
                       name="username"
                       placeholder="Nombre de Usuario"
+                      onChange={(e) =>{setTelefono(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -178,6 +316,21 @@ const Listar = () => {
                       type="email"
                       name="email"
                       placeholder="E-mail"
+                      onChange={(e) =>{setEmail(e.target.value)}}
+                    />
+                    <span class="focus-input100" data-symbol=""></span>
+                  </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Contraseña es requerido"
+                  >
+                    <span class="label-input100">Redes Sociales (link)</span>
+                    <input
+                      class="input100"
+                      type="text"
+                      name="redes"
+                      placeholder="Link"
+                      onChange={(e) =>{setRedes(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
@@ -197,31 +350,61 @@ const Listar = () => {
                     class="wrap-input100 validate-input m-b-23"
                     data-validate="Usuario es requerido"
                   >
+                    <span class="label-input100">Primaria</span>
+                    <input
+                     onChange={(e) =>{setPrimaria(e.target.value)}}
+                      class="input100"
+                      type="text"
+                      name="escuela"
+                      placeholder="Escuela"   
+                    />
+                    <span class="focus-input100" data-symbol=""></span>
+                    
+                  </div>
+                  <div
+                    class="wrap-input100 validate-input m-b-23"
+                    data-validate="Usuario es requerido"
+                  >
                     <span class="label-input100">Colegio secundario</span>
                     <input
                       class="input100"
                       type="text"
                       name="colegio"
                       placeholder="Colegio Secundario"
+                      onChange={(e) =>{setSecundaria(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
-                    <br></br>
-                    <br></br>
+                    
                   </div>
                   <div
                     class="wrap-input100 validate-input"
                     data-validate="Contraseña es requerido"
                   >
-                    <span class="label-input100">Licenciatura</span>
+                    <span class="label-input100">Terciaria</span>
+                    <input
+                      class="input100"
+                      type="text"
+                      name="lic"
+                      placeholder="Terciaria"
+                      onChange={(e) =>{setTerciaria(e.target.value)}}
+                    />
+                    <span class="focus-input100" data-symbol=""></span>
+                    
+                  </div>
+                  <div
+                    class="wrap-input100 validate-input"
+                    data-validate="Contraseña es requerido"
+                  >
+                    <span class="label-input100">Universidad</span>
                     <input
                       class="input100"
                       type="text"
                       name="lic"
                       placeholder="Licenciatura"
+                      onChange={(e) =>{setUniversidad(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
-                    <br></br>
-                    <br></br>
+                   
                   </div>
                   <div
                     class="wrap-input100 validate-input"
@@ -233,10 +416,10 @@ const Listar = () => {
                       type="text"
                       name="cert"
                       placeholder="Cetificados"
+                      onChange={(e) =>{setCertificado(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
-                    <br></br>
-                    <br></br>
+                    
                   </div>
 
                   {/* fin info academica */}
@@ -259,15 +442,10 @@ const Listar = () => {
                       type="text"
                       name="sumario"
                       placeholder="Sumario"
+                      onChange={(e) =>{setSumario(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
-
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-
                   <div
                     class="wrap-input100 validate-input"
                     data-validate="Contraseña es requerido"
@@ -278,14 +456,10 @@ const Listar = () => {
                       type="text"
                       name="expLab"
                       placeholder="Experiencia Laboral"
+                      onChange={(e) =>{setExp(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
-
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
                   <div
                     class="wrap-input100 validate-input"
                     data-validate="Contraseña es requerido"
@@ -296,14 +470,10 @@ const Listar = () => {
                       type="text"
                       name="habilidades"
                       placeholder="Habilidades"
+                      onChange={(e) =>{setHabilidades(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
-
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
 
                   <div
                     class="wrap-input100 validate-input"
@@ -315,9 +485,18 @@ const Listar = () => {
                       type="text"
                       name="lenguajes"
                       placeholder="Lenguajes"
+                      onChange={(e) =>{setIdiomas(e.target.value)}}
                     />
                     <span class="focus-input100" data-symbol=""></span>
                   </div>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
                   <br></br>
                   <br></br>
                   <br></br>
@@ -326,8 +505,11 @@ const Listar = () => {
                   <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                       <div class="login100-form-bgbtn"></div>
-                      <button class="login100-form-btn btn btn-warning">
-                        REGISTRARSE
+                      <button class="login100-form-btn btn btn-warning"
+                      disabled= {enviar ? false : true}
+                      onClick={(e) => {EnviarDatos(e.preventDefault())}}
+                      >
+                        {enviar ? "Enviar" : "Deshabilitado"}
                       </button>
                     </div>
                   </div>

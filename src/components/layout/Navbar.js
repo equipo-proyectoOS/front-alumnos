@@ -10,7 +10,9 @@ import Login from  '../pages/Login'
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  const {listProf} = props
 
   const [Login, setLogin] = useState(null);
 
@@ -70,8 +72,13 @@ const renderCerrarSesion = () =>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active mx-2"> 
-                <Link class ="btn btn-warning" type="button" to='/home'>INICIO</Link>
+            <li class="nav-item active mx-2" key = {'1'}> 
+                <Link class ="btn btn-warning" type="button" to= {{
+                        pathname:'/home',
+                        datos:{profesionales: listProf}
+                    }}
+                    >INICIO
+                    </Link>
               </li>
               <li class="nav-item active mx-2">
                 
