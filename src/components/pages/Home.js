@@ -53,18 +53,19 @@ const Home = (props) => {
                                 <p>Primaria: <b>{item.academic_info.primary}</b></p> 
                                 <p>Secundaria: <b>{item.academic_info.secondary}</b></p>
                                 <p>Universidad: <b>{item.academic_info.tertiary}</b></p> 
-                                <p>titulos: </p>
+                                
                                     { 
                                     item.academic_info.certifications.length > 0 ? 
-                                    item.academic_info.certifications.map(elem=><p>{elem}</p>) : <b>no existe</b>
+                                    item.academic_info.certifications.map(elem=><p>{elem}</p>) : <p>Titulos: <b>no existe</b></p>
                                     }  
                                 <h5 class="card-title mt-3 mb-3">Informacion Profesional</h5>
                                 <p>Conocimientos: <b>{item.professional_info.summary}</b></p>  
                                 <p>Experiencia Laboral: <b>{item.professional_info.work_exp}</b></p>
                                 <p>Habilidades: <b>{item.professional_info.skills}</b></p>
                                 {/* <p>Lenguajes: <b>{item.professional_info.languages}</b></p> */} 
+                                <p>Idiomas: </p>
                                 {
-                                    item.professional_info.languages.length > 0 ? item.professional_info.languages.map(elem => <p>{elem}</p>) : <p>*</p>
+                                    item.professional_info.languages.length > 0 ? item.professional_info.languages.map(elem => <p><b>{elem}</b></p>) : <p>Idiomas: No especificado</p>
                                 }
                                 </div>
                             </div>
