@@ -6,7 +6,7 @@ const usuarioT = localStorage.getItem('loggedUser');
 export default function PrivateRoute({component: Component, ...rest}) {
     return (
         <Route {...rest}>
-        {usuarioT ? (<Redirect to="/home"/>) : (<Component/>) }
+        {usuarioT ? (<Redirect to="/"/>) : (<Component/>) }
         </Route>
     )
 }

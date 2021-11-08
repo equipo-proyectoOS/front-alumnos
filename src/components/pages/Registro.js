@@ -32,13 +32,10 @@ const Registro = () => {
 		myHeaders.append("Content-Type", "application/json")
 
 		const raw = JSON.stringify({
-			correo: [
-				email
-			],
-			password,
+			email: email,
+			password: password,
 			rol:"admin",
-			username,
-			
+			username: username,
 		})
 
 		const options = {
@@ -48,7 +45,7 @@ const Registro = () => {
 			redirect: 'follow'
 		}
 
-		const postData = await fetch("http://localhost:4000/usuarios", options)
+		const postData = await fetch("https://ipf-profesionales.herokuapp.com/api/register", options)
 		const res = postData.json()
 		console.log(res)
 		setRegistrado(true)

@@ -1,10 +1,17 @@
 //import animals from '../../assets/slider-01.jpg'
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 import '../assets/css/tarjetas.css';
-
+import Editar from './editarPerfil';
+import { Link } from 'react-router-dom';
 import { Filtro } from '../js/Filtro';
 
+/* const token = null
+
+    const setToken= newToken => {
+        token = '${newToken}'
+    } */
 
 
 
@@ -14,12 +21,27 @@ const Home = (props) => {
     const [listatadoCompleto, setListadoCompleto] = useState ([])
 
     useEffect(() => {
-        console.log(props + ' Home')
+        //console.log(props + ' Home')
         if(props.location.datos){setListadoCompleto(props.location.datos.profesionales)}
         else{setListadoCompleto([])}
 
         
     }, [props])
+
+   
+
+    
+
+
+  /*   const deleteUser = async (_id) =>{
+        const config = {
+            headers: {
+                Authorization: token
+            }
+        }
+        let urlDelete = 'https://ipf-profesionales.herokuapp.com/api/profesionales/'+ _id;
+        await axios.delete( urlDelete, config )
+    } */
 
     return (
         
@@ -32,6 +54,7 @@ const Home = (props) => {
                     listatadoCompleto.length > 0 ? listatadoCompleto.map(item => {
                         let fecha = new Date(item.personal_info.birthdate)
                         let fechaConvertida = fecha.toLocaleDateString()
+                        let datosUnicos = item
                         return(
                             <div class="col-md-3 col-sm-6" >
                                 <div class="card card-block mx-3 mb-5">
@@ -67,6 +90,17 @@ const Home = (props) => {
                                 {
                                     item.professional_info.languages.length > 0 ? item.professional_info.languages.map(elem => <p><b>{elem}</b></p>) : <p>Idiomas: No especificado</p>
                                 }
+                                {/* <p>ID: {item._id}</p>
+                                <Link className="bt btn-warning" to = "/editar"
+                                //onDoubleClick={() => deleteUser(item._id)}
+                                onClick = {() => Editar(item._id)}
+                                >VER</Link> */}
+                                <Link class ="btn btn-success" type="button" to= {{
+                                                        pathname:'/editar',
+                                                        datos:{profesionales: datosUnicos}
+                                                    }}
+                                                    >Ver Mas
+                                                    </Link>
                                 </div>
                             </div>
                         )

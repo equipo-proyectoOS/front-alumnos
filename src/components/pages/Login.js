@@ -16,6 +16,7 @@ import imagen from "../../Login_v4/images/bg-01.jpg"
 import loginServicios from '../js/login'
 
 
+
 const Login = () => {
 
 	const[errorMessage, setErrorMessage] = useState (null)
@@ -32,7 +33,8 @@ const Login = () => {
 		if (loggeUserJSON){
 			const user = JSON.parse(loggeUserJSON)
 			setUser(user)
-			console.log(user)
+			
+			
 		}
 	},[])
 
@@ -58,11 +60,12 @@ const Login = () => {
 				'loggedUser', JSON.stringify(user)
 			)
 
-			console.log(user)
+			
+			
 			setUser(user);
 			setemail('');
 			setPassword('');
-			window.location.href="/home"
+			window.location.href="/"
 			
 		}catch(e){
 			setErrorMessage('Usuario o Contraseña incorrecta')

@@ -74,7 +74,7 @@ const renderCerrarSesion = () =>
             <ul class="navbar-nav ml-auto">
             <li class="nav-item active mx-2" key = {'1'}> 
                 <Link class ="btn btn-warning" type="button" to= {{
-                        pathname:'/home',
+                        pathname:'/',
                         datos:{profesionales: listProf}
                     }}
                     >INICIO
