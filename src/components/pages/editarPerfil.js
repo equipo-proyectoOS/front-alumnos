@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from 'react'
+import { useParams } from 'react-router';
 
 import '../../Login_v4/vendor/bootstrap/css/bootstrap.min.css';
 import '../../Login_v4/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
@@ -13,63 +14,38 @@ import '../../Login_v4/css/util.css';
 import '../../Login_v4/css/main.css';
 
 import imagen from "../../Login_v4/images/bg-01.jpg"
+import axios from 'axios';
 
-const Editar =  (datosUnicos) => {
+const Editar =  () => {
 
-	//const [listatadoCompleto, setListadoCompleto] = useState ([])
-
-	const mostrarid =  datosUnicos.location.datos.profesionales._id;
-
-			const url = "https://ipf-profesionales.herokuapp.com/api/profesionales/"+mostrarid;
-
-				const [stateProfesionales, setStateProfesionales] = useState([])
-
-				const fetchDataProfesionales = async () => {
-					try {
-						const peticion = await fetch(url)
-						const res = await peticion.json()
-						console.log(res)
-						setStateProfesionales(res)
-					} catch (error) {console.log(error)}
-				}
-
-				useEffect(() => {
-					fetchDataProfesionales()
-				},[])
+      
 
 
-				useEffect(()=>{
-					const url = "https://ipf-profesionales.herokuapp.com/api/profesionales/"+mostrarid;
-					fetch(url)
-						.then(response => response.json())
-						.then(data => mostrarData(data))
-						.catch(error => console.log(error))
-				
-					const mostrarData = (data) => {
-						//console.log(data)
-						let body = ""
-						
-							body += `<div>
-							<div>
-							<h5>${data.personal_info.fullname}</h5>
-							</div>
-							</div>`
-				
-						
-						document.getElementById('data').innerHTML = body
-					}
-				  },[]);
-			
-				
-			/* const [listatadoCompleto, setListadoCompleto] = useState ([])
+	const {proid} = useParams();
+	//console.log(proid)
 
-			useEffect(() => {
-				//console.log(props + ' Home')
-				if(props.location.datos){setListadoCompleto(props.location.datos.profesionales)}
-				else{setListadoCompleto([])}
-		
-				
-			}, [props]) */
+	const [stateProfesionales, setStateProfesionales] = useState(null)
+	const url = "https://ipf-profesionales.herokuapp.com/api/profesionales/"+proid;
+
+  const fetchDataProfesionales = async () => {
+      try {
+          const peticion = await fetch(url)
+          const res = await peticion.json()
+         // console.log(res)
+          setStateProfesionales(res)
+      } catch (error) {console.log(error)}
+  }
+
+  useEffect(() => {
+      fetchDataProfesionales()
+  },[proid])
+	
+	if(!stateProfesionales){
+		return null;
+	}
+
+	let fecha = new Date(stateProfesionales.personal_info.birthdate)
+    let fechaConvertida = fecha.toLocaleDateString();
 		
     return (
         <div class="limiter">
@@ -77,27 +53,47 @@ const Editar =  (datosUnicos) => {
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" id= "data">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
-						DETALLE
+					{stateProfesionales.personal_info.fullname}
 					</span>
-					<div id= "data"  >
-					<div>
- 
-					</div>
-					</div>
-					{/* {
-                    mostrarid.length > 0 ? mostrarid.map(item => {
-                        
-                        return(
-                            <div class="col-md-3 col-sm-6" >
-                                <div class="card card-block mx-3 mb-5">
-                                <img src="https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/foto-de-perfil-para-instagram-1024x538.png" alt="Perfil"/>
-                                <h5 class="card-title mt-3 mb-3"><p>Hola <b>{item.personal_info.fullname}</b></p></h5>
+					
+                            <div >
+                                <div >
+                                {/* <p>Cumpleaños: <b>{stateProfesionales.personal_info.birthdate.substring(0,10)}</b></p> */} 
+                                <p>Cumpleaños: <b>{fechaConvertida}</b></p>
+                                <p>DNI: <b>{stateProfesionales.personal_info.dni}</b></p> 
+                                <p>Genero: <b>{stateProfesionales.personal_info.gender}</b></p> 
+                                <p>Pais: <b>{stateProfesionales.personal_info.country}</b></p>
+                                <p>Provincia: <b>{stateProfesionales.personal_info.state}</b></p>
+                                <p>Direccion: <b>{stateProfesionales.personal_info.address}</b></p> 
+                                <p>Hobby: <b>{stateProfesionales.personal_info.hobbies}</b></p>
+                                <h5 class="card-title mt-3 mb-3">Contacto</h5> 
+                                <p>Telefono: <b>{stateProfesionales.contact_info.phone}</b></p> 
+                                <p>Email: <b>{stateProfesionales.contact_info.email}</b></p> 
+                                <p>Perfil: <b>{stateProfesionales.contact_info.social_media}</b></p> 
+                                <h5 class="card-title mt-3 mb-3">Informacion Academica</h5> 
+                                <p>Primaria: <b>{stateProfesionales.academic_info.primary}</b></p> 
+                                <p>Secundaria: <b>{stateProfesionales.academic_info.secondary}</b></p>
+                                <p>Universidad: <b>{stateProfesionales.academic_info.tertiary}</b></p> 
+                                
+                                    { 
+                                    stateProfesionales.academic_info.certifications.length > 0 ? 
+                                    stateProfesionales.academic_info.certifications.map(elem=><p>{elem}</p>) : <p>Titulos: <b>no existe</b></p>
+                                    }  
+                                <h5 class="card-title mt-3 mb-3">Informacion Profesional</h5>
+                                <p>Conocimientos: <b>{stateProfesionales.professional_info.summary}</b></p>  
+                                <p>Experiencia Laboral: <b>{stateProfesionales.professional_info.work_exp}</b></p>
+                                <p>Habilidades: <b>{stateProfesionales.professional_info.skills}</b></p>
+                                {/* <p>Lenguajes: <b>{stateProfesionales.professional_info.languages}</b></p> */} 
+                                <p>Idiomas: </p>
+                                {
+                                    stateProfesionales.professional_info.languages.length > 0 ? stateProfesionales.professional_info.languages.map(elem => <p><b>{elem}</b></p>) : <p>Idiomas: No especificado</p>
+                                }
+                                <br/>
+                                
                             </div>
 							</div>
-                        )
-                    }):  
-					<h5 class="card-title mt-3 mb-3"><p>Hola <b>:( :( :(</b></p></h5>
-                } */}
+                       
+                 
 				</form>
 			</div>
 		</div>

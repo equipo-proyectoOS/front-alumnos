@@ -39,7 +39,7 @@ function App() {
         <PrivateRoute exact path="/login" component={Login}/>
         <PrivateRoute exact path="/registro" component={Registro}/>
         <PrivateRoute2 exact path="/listar" component={Listar}/>
-        <Route exact path="/editar" component={Editar}/>
+        <Route exact path="/editar/:proid" component={Editar}/>
         <Route exact path="/filtro" component={Filtro}/>
       </Switch>
     )
