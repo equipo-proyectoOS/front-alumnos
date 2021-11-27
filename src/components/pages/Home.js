@@ -1,29 +1,34 @@
-//import animals from '../../assets/slider-01.jpg'
+
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 import '../assets/css/tarjetas.css';
-//import Editar from './editarPerfil';
+
 import { Link } from 'react-router-dom';
 //import { Filtro } from '../js/Filtro';
 
 
-/* const token = null
 
-    const setToken= newToken => {
+
+
+    const token = localStorage.getItem('loggedUser')
+    
+
+    /* const setToken= newToken => {
         token = '${newToken}'
     } */
 
     const deleteUser = async (_id) =>{
         
         console.log(_id)
-        /* const config = {
+        const config = {
             headers: {
                 Authorization: token
             }
-        } */
+        }
+        
         let urlDelete = 'https://ipf-profesionales.herokuapp.com/api/profesionales/'+ _id;
-        await axios.delete( urlDelete )
+        await axios.delete( urlDelete,config )
     }
 
 
@@ -38,21 +43,6 @@ const Home = (props) => {
 
         
     }, [props])
-
-   
-
-    
-
-
-  /*   const deleteUser = async (_id) =>{
-        const config = {
-            headers: {
-                Authorization: token
-            }
-        }
-        let urlDelete = 'https://ipf-profesionales.herokuapp.com/api/profesionales/'+ _id;
-        await axios.delete( urlDelete, config )
-    } */
 
     return (
         
@@ -71,13 +61,11 @@ const Home = (props) => {
                                 <figure>
                                 <img src="https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/foto-de-perfil-para-instagram-1024x538.png" alt="Perfil"/>
                                 <div class = "capa">
-                                        {/* <h3>DETALLE</h3> */}
-                                        <Link  to= {{pathname:'/editar/' + item._id}}
+                                        <Link  to= {{pathname:'/perfil/' + item._id}}
                                                     ><button className="bt btn-success">DETALLE</button>
                                          </Link>
                                 </div>
                                 </figure>
-                                {/* <img src="https://rockcontent.com/es/wp-content/uploads/sites/3/2019/02/foto-de-perfil-para-instagram-1024x538.png" alt="Perfil"/> */}
                                 <h5 class="card-title mt-3 mb-3">{item.personal_info.fullname}</h5>
                                 
                                
@@ -85,12 +73,7 @@ const Home = (props) => {
                                 <p>Genero: <b>{item.personal_info.gender}</b></p> 
                                 
                                 <p>Email: <b>{item.contact_info.email}</b></p> 
-                                {/* <p>ID: {item._id}</p>
-                                <Link className="bt btn-warning" to = "/editar"
-                                //onDoubleClick={() => deleteUser(item._id)}
-                                onClick = {() => Editar(item._id)}
-                                >VER</Link> */}
-                                
+
                                 <div className="buttonDelete">
                                 <button className="bt btn-danger" onDoubleClick={() => (deleteUser(item._id))}>ELIMINAR</button>
                                 </div>

@@ -1,20 +1,14 @@
 //import './App.css';
 import './bootstrap/css/bootstrap.min.css';
 import {useEffect, useState} from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Login from './components/pages/Login';
-import Home from "./components/pages/Home";
-import Registro from"./components/pages/Registro";
-import Listar from"./components/pages/AgregarProf";
-import Editar from './components/pages/editarPerfil';
-import { Filtro } from './components/js/Filtro';
-import PrivateRoute from './components/js/PrivateRoute';
-import PrivateRoute2 from './components/js/PrivateRoute2';
+import { Routing } from './components/routes/Routing'
 
 
 
 function App() {
+  
   const url = "https://ipf-profesionales.herokuapp.com/api/profesionales/";
 
   const [stateProfesionales, setStateProfesionales] = useState([])
@@ -32,18 +26,7 @@ function App() {
       fetchDataProfesionales()
   },[])
 
-  const Routing = () => {
-    return(
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <PrivateRoute exact path="/login" component={Login}/>
-        <PrivateRoute exact path="/registro" component={Registro}/>
-        <PrivateRoute2 exact path="/listar" component={Listar}/>
-        <Route exact path="/editar/:proid" component={Editar}/>
-        <Route exact path="/filtro" component={Filtro}/>
-      </Switch>
-    )
-  }
+  
     return (
   <>
   

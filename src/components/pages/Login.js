@@ -1,19 +1,9 @@
 import React, {useState,useEffect} from 'react'
 
 
-import '../../Login_v4/vendor/bootstrap/css/bootstrap.min.css';
-import '../../Login_v4/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
-import '../../Login_v4/fonts/iconic/css/material-design-iconic-font.min.css';
-import '../../Login_v4/vendor/animate/animate.css';
-import '../../Login_v4/vendor/css-hamburgers/hamburgers.min.css';
-import '../../Login_v4/vendor/css-hamburgers/hamburgers.min.css';
-import '../../Login_v4/vendor/animsition/css/animsition.min.css';
-import '../../Login_v4/vendor/select2/select2.min.css';
-import '../../Login_v4/vendor/daterangepicker/daterangepicker.css';
-import '../../Login_v4/css/util.css';
-import '../../Login_v4/css/main.css';
+
 import imagen from "../../Login_v4/images/bg-01.jpg"
-import loginServicios from '../js/login'
+import loginServicios from '../API/consultaLogin'
 
 
 
@@ -24,9 +14,6 @@ const Login = () => {
 	const [email,setemail] = useState('')
 	const [password,setPassword] = useState('') 
 	const [user, setUser] = useState(null);
-	
-
-	
 
 	useEffect(()=>{
 		const loggeUserJSON = window.localStorage.getItem('loggedUser')
@@ -38,30 +25,22 @@ const Login = () => {
 		}
 	},[])
 
-	
-
 	if (localStorage.getItem(null)){
 		setUser('')
 		console.log(user + " se limipo ")
 	}
 
 	const handleSubmit = async (event) =>{
-		event.preventDefault()
-		
-		try{
-			
+		event.preventDefault()		
+		try{	
 			const user = await loginServicios.buscador({
 				email,
 				password
 				
 			})
-
 			window.localStorage.setItem(
 				'loggedUser', JSON.stringify(user)
 			)
-
-			
-			
 			setUser(user);
 			setemail('');
 			setPassword('');
@@ -117,7 +96,8 @@ const Login = () => {
 							<button class="login100-form-btn">INICIAR</button>
 						</div>
 						 <div>
-						 <p>{errorMessage}</p>
+							 <br/>
+						 <p style={{color:"red"}}>{errorMessage}</p>
 						 </div>
 					</div>
 					

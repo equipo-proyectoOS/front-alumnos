@@ -1,20 +1,10 @@
 import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router';
 
-import '../../Login_v4/vendor/bootstrap/css/bootstrap.min.css';
-import '../../Login_v4/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
-import '../../Login_v4/fonts/iconic/css/material-design-iconic-font.min.css';
-import '../../Login_v4/vendor/animate/animate.css';
-import '../../Login_v4/vendor/css-hamburgers/hamburgers.min.css';
-import '../../Login_v4/vendor/css-hamburgers/hamburgers.min.css';
-import '../../Login_v4/vendor/animsition/css/animsition.min.css';
-import '../../Login_v4/vendor/select2/select2.min.css';
-import '../../Login_v4/vendor/daterangepicker/daterangepicker.css';
-import '../../Login_v4/css/util.css';
-import '../../Login_v4/css/main.css';
+
 
 import imagen from "../../Login_v4/images/bg-01.jpg"
-import axios from 'axios';
+
 
 const Editar =  () => {
 
