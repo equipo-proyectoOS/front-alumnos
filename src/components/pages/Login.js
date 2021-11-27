@@ -9,21 +9,15 @@ import loginServicios from '../API/consultaLogin'
 
 const Login = () => {
 
+	//Creamos un manejador de estado para los mensajes...
 	const[errorMessage, setErrorMessage] = useState (null)
 
+	//Creamos lo manejadores de estado.
 	const [email,setemail] = useState('')
 	const [password,setPassword] = useState('') 
 	const [user, setUser] = useState(null);
 
-	useEffect(()=>{
-		const loggeUserJSON = window.localStorage.getItem('loggedUser')
-		if (loggeUserJSON){
-			const user = JSON.parse(loggeUserJSON)
-			setUser(user)
-			
-			
-		}
-	},[])
+	
 
 	if (localStorage.getItem(null)){
 		setUser('')
@@ -31,21 +25,36 @@ const Login = () => {
 	}
 
 	const handleSubmit = async (event) =>{
-		event.preventDefault()		
+
+		
+		event.preventDefault()	
+		
+		
 		try{	
+
+			//le pasamos las credenciales
 			const user = await loginServicios.buscador({
 				email,
 				password
 				
 			})
+
+			//guardarmos la informacion en el localStorage
 			window.localStorage.setItem(
+				//Lo guardamos comos string
 				'loggedUser', JSON.stringify(user)
 			)
+			//Guardamos la informacion
 			setUser(user);
+
+			//reseteamos los estados
 			setemail('');
 			setPassword('');
+			//Redireccionamos a la ruta home
 			window.location.href="/"
 			
+
+			//Si hay error se envia un mensaje que dura 3s.
 		}catch(e){
 			setErrorMessage('Usuario o Contraseña incorrecta')
 			setTimeout(() => {

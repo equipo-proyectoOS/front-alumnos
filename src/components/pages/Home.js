@@ -1,9 +1,9 @@
 
-import axios from 'axios';
+//Importamos los Hooks.
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 import '../assets/css/tarjetas.css';
-
 import { Link } from 'react-router-dom';
 //import { Filtro } from '../js/Filtro';
 
@@ -11,16 +11,45 @@ import { Link } from 'react-router-dom';
 
 
 
-    const token = localStorage.getItem('loggedUser')
+    
     
 
     /* const setToken= newToken => {
         token = '${newToken}'
     } */
 
+    
+
+//Agregamos props como parámetro de nuestro componente.
+const Home = (props) => {
+    
+    //creamos un estado encargado de manejar el listado, 
+    //como valor inicial le damos un array vacío.
+    const [listatadoCompleto, setListadoCompleto] = useState ([])
+
+    //Usamos el useEffect para setear los valores del prop.
+    useEffect(() => {
+
+        //hacemos un console.log(props) para analizar cómo se compone el prop. enviado desde el Link.
+        //console.log(props)
+
+         //si existe lo asignamos a listadoCompleto.
+        if(props.location.datos){setListadoCompleto(props.location.datos.profesionales)}
+
+        //Si no existe le asignamos array vacio.
+        else{setListadoCompleto([])}
+    }, [props])
+
+
+    //traemos el token del localStorage
+    const token = "localStorage.getItem('loggedUser')"
+
+
+    //funcion para eliminar un profesional
     const deleteUser = async (_id) =>{
         
         console.log(_id)
+        //onsole.log()
         const config = {
             headers: {
                 Authorization: token
@@ -28,33 +57,19 @@ import { Link } from 'react-router-dom';
         }
         
         let urlDelete = 'https://ipf-profesionales.herokuapp.com/api/profesionales/'+ _id;
-        await axios.delete( urlDelete,config )
+        await axios.delete( urlDelete,token )
     }
 
-
-const Home = (props) => {
-        
-    const [listatadoCompleto, setListadoCompleto] = useState ([])
-
-    useEffect(() => {
-        //console.log(props + ' Home')
-        if(props.location.datos){setListadoCompleto(props.location.datos.profesionales)}
-        else{setListadoCompleto([])}
-
-        
-    }, [props])
-
     return (
-        
-    <div class="container-login100" style={{ backgroundImage: `url(${imagen})` }}>
-       
+
+//Creamos una tarjeta para mostrar los datos.
+//mediante el método “map” iteramos sobre el array para mostrar los datos correspondientes.
+
+    <div class="container-login100" style={{ backgroundImage: `url(${imagen})` }}>    
         <div class="container mt-2">
-        
             <div class="row" id="data">
                 {
-                    listatadoCompleto.length > 0 ? listatadoCompleto.map(item => { 
-                        
-                        
+                    listatadoCompleto.length > 0 ? listatadoCompleto.map(item => {    
                         return(
                             <div class="col-md-3 col-sm-6">
                                 <div class="card card-block mx-3 mb-5">

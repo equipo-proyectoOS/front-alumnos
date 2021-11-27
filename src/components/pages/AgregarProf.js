@@ -1,22 +1,14 @@
 import React, {useState, useEffect} from "react";
 import * as yup from 'yup';
 
-import "../../Login_v4/vendor/bootstrap/css/bootstrap.min.css";
-import "../../Login_v4/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
-import "../../Login_v4/fonts/iconic/css/material-design-iconic-font.min.css";
-import "../../Login_v4/vendor/animate/animate.css";
-import "../../Login_v4/vendor/css-hamburgers/hamburgers.min.css";
-import "../../Login_v4/vendor/css-hamburgers/hamburgers.min.css";
-import "../../Login_v4/vendor/animsition/css/animsition.min.css";
-import "../../Login_v4/vendor/select2/select2.min.css";
-import "../../Login_v4/vendor/daterangepicker/daterangepicker.css";
-import "../../Login_v4/css/util.css";
-import "../../Login_v4/css/main.css";
+
 
 import imagen from "../../Login_v4/images/bg-01.jpg";
 
 const Listar = () => {
 
+  //Creamos el esquema de yup.
+  //Le asignamos a cada valor su propio tipo de dato.
   let schemaDatosProf = yup.object().shape({
     nombre:yup.string().required(),
     nacimiento: yup.string().required(),
@@ -40,30 +32,31 @@ const Listar = () => {
     idiomas: yup.string()
   })
 
-const[nombre, setNombre] = useState('')
-const[nacimiento, setNacimiento] = useState('')
-const[dni, setDni] = useState('')
-const[genero, setGenero] = useState('')
-const[provincia, setProvincia] = useState('')
-const[pais, setPais] = useState('')
-const[direccion, setDireccion] = useState('')
-const[hobbies, setHobbies] = useState('')
-const[telefono, setTelefono] = useState('')
-const[email, setEmail] = useState('')
-const[redes, setRedes] = useState('')
-const[primaria, setPrimaria] = useState('')
-const[secundaria, setSecundaria] = useState('')
-const[terciaria, setTerciaria] = useState('')
-const[universidad, setUniversidad] = useState('')
-const[certificado, setCertificado] = useState('')
-const[sumario, setSumario] = useState('')
-const[exp, setExp] = useState('')
-const[hablidades, setHabilidades] = useState('')
-const[idiomas, setIdiomas] = useState('')
+  //creamos lo manejadores de estado.
+  const[nombre, setNombre] = useState('')
+  const[nacimiento, setNacimiento] = useState('')
+  const[dni, setDni] = useState('')
+  const[genero, setGenero] = useState('')
+  const[provincia, setProvincia] = useState('')
+  const[pais, setPais] = useState('')
+  const[direccion, setDireccion] = useState('')
+  const[hobbies, setHobbies] = useState('')
+  const[telefono, setTelefono] = useState('')
+  const[email, setEmail] = useState('')
+  const[redes, setRedes] = useState('')
+  const[primaria, setPrimaria] = useState('')
+  const[secundaria, setSecundaria] = useState('')
+  const[terciaria, setTerciaria] = useState('')
+  const[universidad, setUniversidad] = useState('')
+  const[certificado, setCertificado] = useState('')
+  const[sumario, setSumario] = useState('')
+  const[exp, setExp] = useState('')
+  const[hablidades, setHabilidades] = useState('')
+  const[idiomas, setIdiomas] = useState('')
+  //
+  const[enviar,  setEnviar] = useState(false);
 
-const[enviar,  setEnviar] = useState(false);
-
-
+//Ahora vamos a usar la función de validación propia de yup, /para ello vamos a colocar dentro del Hook useEffect .
 useEffect(() => {
   schemaDatosProf.isValid({nombre, nacimiento, dni,genero,provincia, pais,direccion,hobbies,telefono,email,
     redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas})
@@ -81,13 +74,12 @@ useEffect(() => {
   redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas, schemaDatosProf])
 
 
-	//const [registrado, setRegistrado] = useState(null)
-
+  //Creamos la función de Registrar Nuevo Profesional
 	const EnviarDatos = async () => {
 
 		let myHeaders = new Headers();
-
 		myHeaders.append("Content-Type", "application/json")
+
 
 		const raw = JSON.stringify({
         "personal_info": {
@@ -137,13 +129,13 @@ useEffect(() => {
 		const postData = await fetch("http://localhost:4000/usuarios", options)
 		const res = postData.json()
 		console.log(res)
-		//setRegistrado(true)
+		
 
 		
 	}
 
 
-
+//Los onchange de cada input manejan los estados de las dependencias de yup.
   return (
     <div class="limiter">
       <div

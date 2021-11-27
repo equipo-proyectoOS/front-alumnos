@@ -7,6 +7,7 @@ import imagen from "../../Login_v4/images/bg-01.jpg"
 
 const Registro = () => {
 
+	//Creamos el history y los estados
 	const history= useHistory()
 
 	const [email, setEmail] = useState('');
@@ -15,6 +16,7 @@ const Registro = () => {
 
 	const [registrado, setRegistrado] = useState(null)
 
+	//Creamos la función de registrarNuevoUser
 	const RegistrarNuevoUser = async () => {
 
 		let myHeaders = new Headers();
@@ -42,8 +44,10 @@ const Registro = () => {
 
 		
 	}
-
+	
+	//Usamos el useEffect para detectar el cambio de estado y activar el history.
 	useEffect(() => {
+		//Con el método push le decimos hacia donde queremos que se dirija. 
 		if(registrado){
 			history.push('/login')
 		}

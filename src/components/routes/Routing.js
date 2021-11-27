@@ -10,6 +10,9 @@ import Perfil from '../pages/VerPerfil';
 import PrivateRoute from '../js/PrivateRoute';
 import PrivateRoute2 from '../js/PrivateRoute2';
 
+
+
+//Creamos nuestra función de enrutamiento
 export const Routing = () => {
     return(
       <Switch>

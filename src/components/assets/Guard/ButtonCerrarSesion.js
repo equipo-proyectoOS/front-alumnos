@@ -5,7 +5,7 @@ export const ButtonCerrarSesion = () => {
   
 
  
-
+  //Usamos RemoveItem para eliminar el token del localStorage
   const logaut = () => {
 		window.localStorage.removeItem('loggedUser')
     window.location.href="/login"

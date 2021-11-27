@@ -14,9 +14,13 @@ const Editar =  () => {
 	const {proid} = useParams();
 	//console.log(proid)
 
+    //Cacemos un setState para guardar el array que nos devuelve la api
 	const [stateProfesionales, setStateProfesionales] = useState(null)
+
+    //creamos una const de la url de nuestra api y le agregamos la id que traemos por parametros.
 	const url = "https://ipf-profesionales.herokuapp.com/api/profesionales/"+proid;
 
+      //Creamos la función para consumir la api
   const fetchDataProfesionales = async () => {
       try {
           const peticion = await fetch(url)
@@ -26,14 +30,18 @@ const Editar =  () => {
       } catch (error) {console.log(error)}
   }
 
+    //Ahora usamos el useEffect para ejecutar todo lo anterior
   useEffect(() => {
       fetchDataProfesionales()
   },[proid])
 	
+
+  //verificamos que stateProfesionales no este vacio
 	if(!stateProfesionales){
 		return null;
 	}
 
+    //Manjamos las fechas para visualizarlo de forma correcta
 	let fecha = new Date(stateProfesionales.personal_info.birthdate)
     let fechaConvertida = fecha.toLocaleDateString();
 		
