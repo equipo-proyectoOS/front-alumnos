@@ -42,23 +42,37 @@ const Home = (props) => {
 
 
     //traemos el token del localStorage
-    const token = "localStorage.getItem('loggedUser')"
+    /* const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODg3OTE5NDZmMDE0ZDE5NmU1Y2E5NiIsImlhdCI6MTYzODA2NDU5M30.FYCQ-g3CvfSRrp-VPvE01mH6iavnfN3wkv1Qx54iVYE" */
+    
+    const Datos = localStorage.getItem('loggedUser');
+    /* const token = "" */
 
-
+    if (Datos){
+        const parse = JSON.parse(Datos);
+        var token = parse.data.token; 
+    }
+    
+    
     //funcion para eliminar un profesional
     const deleteUser = async (_id) =>{
         
         console.log(_id)
         //onsole.log()
-        const config = {
-            headers: {
-                Authorization: token
-            }
-        }
-        
+        const options = {
+			headers: {
+            'auth-token': token,
+            'Content-type': 'application/json'
+      }
+		}
+    
         let urlDelete = 'https://ipf-profesionales.herokuapp.com/api/profesionales/'+ _id;
-        await axios.delete( urlDelete,token )
+        await axios.delete( urlDelete,options )
+        window.location.href="/"
     }
+
+  
+
+
 
     return (
 
@@ -100,6 +114,7 @@ const Home = (props) => {
                 }      
             </div>    
         </div>
+        
     </div>  
 
     )

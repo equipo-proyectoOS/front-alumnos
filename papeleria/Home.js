@@ -1,4 +1,16 @@
 //import animals from '../../assets/slider-01.jpg'
+
+
+
+
+
+
+
+///////////////////////////////////////////
+
+        //No sirve ahre
+
+////////////////////////////////////////////
 import React, {useEffect} from 'react';
 import imagen from "../../Login_v4/images/bg-01.jpg"
 

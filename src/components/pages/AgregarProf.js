@@ -24,12 +24,11 @@ const Listar = () => {
     primaria: yup.string().required(),
     secundaria: yup.string().required(),
     terciaria: yup.string().required(),
-    universidad: yup.string().required(),
     certificado: yup.string(),
     sumario: yup.string().required(),
     exp: yup.string().required(),
     hablidades: yup.string().required(),
-    idiomas: yup.string()
+    idiomas: yup.string().required()
   })
 
   //creamos lo manejadores de estado.
@@ -47,7 +46,6 @@ const Listar = () => {
   const[primaria, setPrimaria] = useState('')
   const[secundaria, setSecundaria] = useState('')
   const[terciaria, setTerciaria] = useState('')
-  const[universidad, setUniversidad] = useState('')
   const[certificado, setCertificado] = useState('')
   const[sumario, setSumario] = useState('')
   const[exp, setExp] = useState('')
@@ -59,7 +57,7 @@ const Listar = () => {
 //Ahora vamos a usar la función de validación propia de yup, /para ello vamos a colocar dentro del Hook useEffect .
 useEffect(() => {
   schemaDatosProf.isValid({nombre, nacimiento, dni,genero,provincia, pais,direccion,hobbies,telefono,email,
-    redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas})
+    redes,primaria,secundaria,terciaria,certificado,sumario,exp,hablidades,idiomas})
 
     .then(
       (valid) => {
@@ -71,15 +69,17 @@ useEffect(() => {
       }
     )
 },[nombre, nacimiento, dni,genero,provincia, pais,direccion,hobbies,telefono,email,
-  redes,primaria,secundaria,terciaria,universidad,certificado,sumario,exp,hablidades,idiomas, schemaDatosProf])
+  redes,primaria,secundaria,terciaria,certificado,sumario,exp,hablidades,idiomas, schemaDatosProf])
 
 
+
+  const Datos = localStorage.getItem('loggedUser');
+  const parse = JSON.parse(Datos);
+  const token = parse.data.token;
   //Creamos la función de Registrar Nuevo Profesional
 	const EnviarDatos = async () => {
 
-		let myHeaders = new Headers();
-		myHeaders.append("Content-Type", "application/json")
-
+		
 
 		const raw = JSON.stringify({
         "personal_info": {
@@ -121,7 +121,10 @@ useEffect(() => {
 
 		const options = {
 			method: 'POST',
-			headers: myHeaders,
+			headers: {
+        'auth-token': token,
+        'Content-type': 'application/json'
+      },
 			body: raw,
 			redirect: 'follow'
 		}
@@ -383,21 +386,7 @@ useEffect(() => {
                     <span class="focus-input100" data-symbol=""></span>
                     
                   </div>
-                  <div
-                    class="wrap-input100 validate-input"
-                    data-validate="Contraseña es requerido"
-                  >
-                    <span class="label-input100">Universidad</span>
-                    <input
-                      class="input100"
-                      type="text"
-                      name="lic"
-                      placeholder="Licenciatura"
-                      onChange={(e) =>{setUniversidad(e.target.value)}}
-                    />
-                    <span class="focus-input100" data-symbol=""></span>
-                   
-                  </div>
+                  
                   <div
                     class="wrap-input100 validate-input"
                     data-validate="Contraseña es requerido"
