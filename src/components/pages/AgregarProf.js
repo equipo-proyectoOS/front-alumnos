@@ -129,9 +129,10 @@ useEffect(() => {
 			redirect: 'follow'
 		}
 
-		const postData = await fetch("http://localhost:4000/usuarios", options)
+		const postData = await fetch("https://ipf-profesionales.herokuapp.com/api/profesionales/", options)
 		const res = postData.json()
 		console.log(res)
+    window.location.href="/"
 		
 
 		
